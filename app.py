@@ -71,7 +71,7 @@ def edit(id):
 
     return render_template('edit.html', post=post)
 
-@app.route('/<int:id>/delete', methods=('POST',))
+@app.route('/<int:id>/del', methods=('POST',))
 def delete(id):
     post = get_post(id)
     conn = get_db_connection()
@@ -81,7 +81,7 @@ def delete(id):
     flash('"{}" was successfully deleted!'.format(post['title']))
     return redirect(url_for('index'))
 @app.route('/update_server', methods=['POST'])
-    def webhook():
+def webhook():
         if request.method == 'POST':
             repo = git.Repo('path/to/git_repo')
             origin = repo.remotes.origin
